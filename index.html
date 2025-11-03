@@ -1,90 +1,301 @@
 <!DOCTYPE html>
-<html lang="my">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> အင်တာနက်ဖရီး သုံးဖို့ စမတ်နည်းများ  </title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>เว็บไซต์ของฉัน</title>
     <style>
-        .card-title {
-            font-size: 1rem;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .title { color: black; }
-        .dtac { color: blue; }
-        .true { color: red; }
-        .ais { color: green; }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Button Section */
+        .button-section {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            justify-content: center;
+        }
+
+        .btn i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        .sim-btn {
+            background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+            color: white;
+        }
+
+        .sim-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 126, 95, 0.4);
+        }
+
+        .online-btn {
+            background: linear-gradient(135deg, #42e695 0%, #3bb2b8 100%);
+            color: white;
+        }
+
+        .online-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(66, 230, 149, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #6a11cb;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+            }
+
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .button-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
     </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header class="my-4">
-         
-        </header>
-
-        <div class="row">
-        	<footer class="text-center mt-4">             
-              <div class="col-md-4 ais-section">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img src="https://raw.githubusercontent.com/hunmai/icon/refs/heads/main/icon_shan.png" alt="SHAN Logo" class="card-img-center" style="max-height: 50px; width: auto;">
-                        <p>SHAN VPN Download </p>
-                        <button class="btn btn-outline-primary toggle-btn" type="button" aria-controls="aisLayout" onclick="location.href='https://play.google.com/store/apps/details?id=com.shanvpn.vpnth'">
-                            SHAN VPN ဒေါင်းရန် နှိပ်ပါ
-                        </button>
-                  </div>
-                </div>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                <span>SHAN VPN</span>
             </div>
-            <!-- Dtac Card -->
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        
-                        <img src="https://www.dtac.co.th/dtac-library/assets/img/icons/ico-dtac.png" alt="Dtac Logo" class="card-img-center" style="max-height: 50px; width: auto;">
-                        <p>Dtac 64Kbps ပက့်ကေ့ဝယ်ယူနည်း</p>
-<p>ဝယ်ကုဒ် (*117*30#) 30ရက်/30ဘတ်</p>
-<p>အပေါ်ကပက်ကေ့ဝယ်ပြီးရင် VPN နဲ့ချိတ်သုံးလိုရပါပြီ
-
-                       
+            <ul class="nav-links">
                 
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- True Card -->
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img src="https://topping.truemoveh.com/assets/static/images/icon_fb&true@3x.82de9630.png" alt="True Logo" class="card-img-center" style="max-height: 30px; width: auto;">             
-        <p>True VDO ပက်ကေ့ဝယ်ယူနည်း</p>
-<p>ဝယ်ကုဒ် (*900*1347#) 30ရက်/54ဘတ်</p>
-<p>အပေါ်ကပက့်ကေ့ဝယ်ပြီးရင် VPN နဲ့ချိတ်သုံးလို့ရပါပြီ  </p>
-        
-                              
-                    </div>
-                </div>
-            </div>
-            <!-- Ais Card -->
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBwSTp4vgOVqME3OlQ30ghtLyl08fqw1xsemUKEdPNm937DFZ4CZlI_Zcn&s=10" alt="Ais Logo" class="card-img-center" style="max-height: 50px; width: auto;">
-                        <p>Ais Play+64kbps ပက်ကေ့ဝယ်နည်း</p>
-<p>ဝယ်ကုဒ် (*777*7067#) 30ရက်/32ဘတ်</p>
-<p>ဝယ်ကုဒ် (*777*885#) 30ရက်/64ဘတ်</p>                        
-<p>အပေါ်ကပက်ကေ့နှစ်ခုလုံးဝယ်ပြီးရင် VPN ချိတ်သုံးလို့ရပါပြီ       
-                    </div>
-                </div>
-            </div>
+                <li><a href="https://all-app-link.netlify.app/about"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="https://www.facebook.com/share/19xWsJAAkm/"><i class="fab fa-facebook"></i> Facebook</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <footer class="text-center mt-4">
-            <p>&copy; SHAN VPN 2025-2026</p>
-        </footer>
+    <!-- Main Content -->
+    <div class="container">
+        <section class="hero">
+            <h1>ကျွန်ုပ်တို့၏ ဝဘ်ဆိုက်သို့ ကြိုဆိုပါသည်</h1>
+            
+            
+            <div class="button-section">
+                <a href="https://all-app-link.netlify.app/package.html" class="btn sim-btn" target="_blank">
+                    <i class="fas fa-sim-card"></i> Sim & Package
+                </a>
+                <a href="http://online.myshan.site:82/khamvpn90.php" class="btn online-btn" target="_blank">
+                    <i class="fas fa-users"></i> Online User
+                </a>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>စက်ပစ္စည်းအားလုံးကို ပံ့ပိုးမှု</h3>
+                <p>ကျွန်ုပ်တို့၏ ဝဘ်ဆိုက်ကို ကွန်ပျူတာများ၊ တက်ဘလက်များနှင့် စမတ်ဖုန်းများ အပါအဝင် စက်ပစ္စည်းအားလုံးနှင့် တွဲဖက်အသုံးပြုနိုင်ရန် ဒီဇိုင်းထုတ်ထားပါသည်။</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>မြန်ဆန်ပြီး တည်ငြိမ်သည်</h3>
+                <p>ကျွန်ုပ်တို့၏စနစ်သည် မြန်နှုန်းမြင့်ပြီး တည်ငြိမ်သောကြောင့် တစ်နေ့လျှင် ၂၄ နာရီ ဝန်ဆောင်မှုပေးရန် အသင့်ရှိနေပါသည်။</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>လုံခြုံရေး</h3>
+                <p>သင့်အချက်အလက်များကို ခေတ်မီသော ကုဒ်ဝှက်စနစ်ဖြင့် လုံခြုံစွာ သိမ်းဆည်းထားပါမည်။</p>
+            </div>
+        </section>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <footer>
+        <p>&copy; 2023 My website. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // จำลองจำนวนคนออนไลน์แบบสุ่ม
+        function updateOnlineCount() {
+            const onlineCount = Math.floor(Math.random() * 100) + 50;
+            document.getElementById('online-count').textContent = onlineCount;
+        }
+        
+        // อัพเดทจำนวนคนออนไลน์ทุก 10 วินาที
+        updateOnlineCount();
+        setInterval(updateOnlineCount, 10000);
+    </script>
 </body>
 </html>
