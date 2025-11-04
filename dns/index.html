@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="my" data-theme="light">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -89,13 +89,19 @@
       width: 40px;
       height: 40px;
       border-radius: 10px;
-      background: var(--gradient);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       font-size: 18px;
       box-shadow: var(--shadow);
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
     }
 
     .logo-text {
@@ -111,12 +117,6 @@
       color: var(--text-secondary);
       font-size: 14px;
       margin-bottom: 6px;
-    }
-
-    .byline {
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 12px;
     }
 
     .card {
@@ -430,24 +430,23 @@
     <div class="header">
       <div class="logo">
         <div class="logo-icon">
-          <i class="fas fa-server"></i>
+          <img src="https://my-app-icon.netlify.app/icon_shan.png" alt="SHAN VPN Logo">
         </div>
         <div class="logo-text">SHAN VPN Free DNS</div>
       </div>
-      <p class="tagline">จัดการ DNS records อย่างง่ายดายและปลอดภัย</p>
-      <p class="byline">พัฒนาโดย: Jue Htet</p>
+      <p class="tagline">Manage DNS records easily and securely</p>
     </div>
 
     <div class="card">
       <h2 class="card-title">
         <i class="fas fa-plus-circle"></i>
-        เพิ่ม/อัปเดต DNS Record
+        Add/Update DNS Record
       </h2>
       
       <form id="dnsForm" autocomplete="off">
         <div class="form-grid">
           <div class="form-group">
-            <label for="type">ประเภท</label>
+            <label for="type">Type</label>
             <select id="type" required>
               <option value="A">A</option>
               <option value="AAAA">AAAA</option>
@@ -461,24 +460,24 @@
           </div>
 
           <div class="form-group">
-            <label for="host">โฮสต์</label>
-            <input id="host" type="text" placeholder="sub (หรือ sub.shanvpn.site)" required />
+            <label for="host">Host</label>
+            <input id="host" type="text" placeholder="sub (or sub.shanvpn.site)" required />
           </div>
 
           <div class="form-group">
-            <label id="contentLabel" for="content">ที่อยู่ IPv4</label>
-            <input id="content" type="text" placeholder="เช่น 203.0.113.10" required />
+            <label id="contentLabel" for="content">IPv4 Address</label>
+            <input id="content" type="text" placeholder="e.g. 203.0.113.10" required />
           </div>
 
           <div class="form-group" id="prioRow" style="display:none">
-            <label for="priority">ลำดับความสำคัญ</label>
-            <input id="priority" type="number" min="0" max="65535" placeholder="10 (สำหรับ MX เท่านั้น)" />
+            <label for="priority">Priority</label>
+            <input id="priority" type="number" min="0" max="65535" placeholder="10 (for MX only)" />
           </div>
 
           <div class="form-group">
             <label for="ttl">TTL</label>
             <select id="ttl">
-              <option value="1" selected>อัตโนมัติ</option>
+              <option value="1" selected>Auto</option>
               <option value="60">60</option>
               <option value="120">120</option>
               <option value="300">300</option>
@@ -495,28 +494,28 @@
               <input id="proxied" type="checkbox" class="checkbox" checked />
               <span class="checkmark"></span>
             </label>
-            <span class="checkbox-label">พร็อกซี่ผ่าน Cloudflare</span>
-            <span class="note">(สำหรับ A / AAAA / CNAME เท่านั้น)</span>
+            <span class="checkbox-label">Proxy through Cloudflare</span>
+            <span class="note">(for A / AAAA / CNAME only)</span>
           </div>
-          <div class="note">ปิดสวิตช์นี้สำหรับ DNS ONLY</div>
+          <div class="note">Turn this off for DNS ONLY</div>
         </div>
 
         <div class="button-group">
           <button type="submit" class="btn btn-primary">
             <i class="fas fa-save"></i>
-            เพิ่ม / อัปเดต
+            Add / Update
           </button>
           <button type="button" id="resetBtn" class="btn btn-secondary">
             <i class="fas fa-redo"></i>
-            รีเซ็ต
+            Reset
           </button>
         </div>
         
         <div id="msg" class="message"></div>
 
         <div class="note">
-          โฮสต์ที่พิมพ์สั้น (เช่น <span class="mono highlight">app</span>) จะถูกแปลงเป็น
-          <span class="mono highlight">app.shanvpn.site</span> โดยอัตโนมัติ
+          Short hostnames (e.g. <span class="mono highlight">app</span>) will automatically be converted to
+          <span class="mono highlight">app.shanvpn.site</span>
         </div>
       </form>
     </div>
@@ -524,24 +523,24 @@
     <div class="card">
       <h2 class="card-title">
         <i class="fas fa-search"></i>
-        ค้นหาโฮสต์เป็น IP
+        Lookup Host to IP
       </h2>
       
       <div class="form-grid">
         <div class="form-group">
-          <label for="lookupHost">โฮสต์</label>
-          <input id="lookupHost" type="text" placeholder="sub (หรือชื่อโฮสต์เต็ม)" />
+          <label for="lookupHost">Host</label>
+          <input id="lookupHost" type="text" placeholder="sub (or full hostname)" />
         </div>
       </div>
       
       <div class="button-group">
         <button type="button" id="lookupBtn" class="btn btn-primary">
           <i class="fas fa-search"></i>
-          ค้นหา
+          Lookup
         </button>
         <button type="button" id="lookupReset" class="btn btn-secondary">
           <i class="fas fa-times"></i>
-          ล้าง
+          Clear
         </button>
       </div>
       
@@ -549,7 +548,7 @@
     </div>
 
     <div class="footer">
-      <p>Admin: Jue Htet จัดทำขึ้นด้วยใจเพื่อชุมชน</p>
+      <p>Free DNS Management for the Community</p>
     </div>
   </div>
 
@@ -664,14 +663,14 @@
       prioRow.style.display = (t === "MX") ? "block" : "none";
       
       const placeholders = {
-        "A": ["ที่อยู่ IPv4", "เช่น 203.0.113.10"],
-        "AAAA": ["ที่อยู่ IPv6", "เช่น 2001:db8::1"],
-        "CNAME": ["โฮสต์เป้าหมาย", "เช่น target.example.com"],
-        "TXT": ["ค่า TXT", 'เช่น v=spf1 include:_spf.example ~all'],
-        "MX": ["เซิร์ฟเวอร์เมล", "เช่น mail.example.com"],
-        "NS": ["เนมเซิร์ฟเวอร์", "เช่น ns1.example.com"],
-        "CAA": ["ค่า CAA", 'เช่น 0 issue "letsencrypt.org"'],
-        "HTTPS": ["ค่า", "ค่า HTTPS record"]
+        "A": ["IPv4 Address", "e.g. 203.0.113.10"],
+        "AAAA": ["IPv6 Address", "e.g. 2001:db8::1"],
+        "CNAME": ["Target Host", "e.g. target.example.com"],
+        "TXT": ["TXT Value", 'e.g. v=spf1 include:_spf.example ~all'],
+        "MX": ["Mail Server", "e.g. mail.example.com"],
+        "NS": ["Nameserver", "e.g. ns1.example.com"],
+        "CAA": ["CAA Value", 'e.g. 0 issue "letsencrypt.org"'],
+        "HTTPS": ["Value", "HTTPS record value"]
       };
       
       const p = placeholders[t];
@@ -712,17 +711,17 @@
       const proxied = !!proxiedEl.checked;
 
       if (!name) {
-        showMessage("error", "❌ ต้องระบุโฮสต์");
+        showMessage("error", "❌ Host is required");
         return;
       }
       
       if (!(name === ROOT || name.endsWith("." + ROOT))) {
-        showMessage("error", `❌ โฮสต์ต้องอยู่ภายใต้ ${ROOT}`);
+        showMessage("error", `❌ Host must be under ${ROOT}`);
         return;
       }
       
       if (!content) {
-        showMessage("error", "❌ ต้องระบุเนื้อหา");
+        showMessage("error", "❌ Content is required");
         return;
       }
 
@@ -731,7 +730,7 @@
       if (type === "MX") {
         const p = parseInt(priorityEl.value, 10);
         if (Number.isNaN(p)) {
-          showMessage("error", "❌ ต้องระบุลำดับความสำคัญสำหรับ MX");
+          showMessage("error", "❌ Priority is required for MX records");
           return;
         }
         payload.priority = p;
@@ -741,7 +740,7 @@
         payload.proxied = proxied;
       }
 
-      showMessage("warning", "กำลังประมวลผล...");
+      showMessage("warning", "Processing...");
       
       try {
         const res = await fetch(API_URL, {
@@ -756,12 +755,12 @@
           const r = data.record || data.result || {};
           const c = (r.content || content);
           const n = (r.name || name);
-          showMessage("success", `สำเร็จ ✅ : ${c} → ${n} (${data.action || 'สร้าง'})`);
+          showMessage("success", `Success ✅ : ${c} → ${n} (${data.action || 'created'})`);
         } else {
-          showMessage("error", "❌ ข้อผิดพลาด: " + (data.error || "ไม่ทราบสาเหตุ"));
+          showMessage("error", "❌ Error: " + (data.error || "Unknown cause"));
         }
       } catch(err) {
-        showMessage("error", "❌ ข้อผิดพลาดเครือข่าย: " + err.message);
+        showMessage("error", "❌ Network error: " + err.message);
       }
     });
 
@@ -783,7 +782,7 @@
     async function doh(name, type) {
       const url = `https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(name)}&type=${type}`;
       const res = await fetch(url, { headers: { accept: "application/dns-json" } });
-      if (!res.ok) throw new Error(`DoH ${type} ล้มเหลว (${res.status})`);
+      if (!res.ok) throw new Error(`DoH ${type} failed (${res.status})`);
       return res.json();
     }
 
@@ -795,11 +794,11 @@
       const name = normalizeHost(lookupHostEl.value);
       
       if (!name) {
-        showMessage("error", "❌ ต้องระบุโฮสต์", lookupMsg);
+        showMessage("error", "❌ Host is required", lookupMsg);
         return;
       }
       
-      showMessage("warning", "กำลังค้นหา...", lookupMsg);
+      showMessage("warning", "Looking up...", lookupMsg);
       
       try {
         const [a4, a6] = await Promise.allSettled([
@@ -811,7 +810,7 @@
         const v6 = (a6.status === "fulfilled") ? formatAnswers(a6.value?.Answer) : [];
         
         if (v4.length === 0 && v6.length === 0) {
-          showMessage("error", `ไม่พบคำตอบ A/AAAA สำหรับ ${name}`, lookupMsg);
+          showMessage("error", `No A/AAAA answers found for ${name}`, lookupMsg);
           return;
         }
         
@@ -822,7 +821,7 @@
         lookupMsg.className = "message success";
         lookupMsg.innerHTML = `<span class="mono highlight">${name}</span><br>${chunks.join("<br>")}`;
       } catch(err) {
-        showMessage("error", "❌ ข้อผิดพลาดในการค้นหา: " + err.message, lookupMsg);
+        showMessage("error", "❌ Lookup error: " + err.message, lookupMsg);
       }
     }
   </script>
