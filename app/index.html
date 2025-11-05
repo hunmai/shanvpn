@@ -1,1 +1,228 @@
-app
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ดาวน์โหลดแอปพลิเคชัน</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease;
+        }
+        
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #4285F4, #34A853);
+            border-radius: 25px;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+        
+        .countdown-container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+        
+        .countdown-text {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .countdown-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            animation: pulse 1s infinite;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, #4285F4, #34A853);
+            transition: width 1s linear;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .feature {
+            flex: 1;
+            min-width: 150px;
+            margin: 10px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .skip-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            border: 1px solid #FFD700;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .skip-btn:hover {
+            background-color: rgba(255, 215, 0, 0.2);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .features {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="app-icon">
+            <span>📱</span>
+        </div>
+        
+        <h1>แอปพลิเคชันสุดเจ๋ง</h1>
+        <p>พบกับแอปพลิเคชันที่ทันสมัยและใช้งานง่าย พร้อมฟีเจอร์ใหม่ๆ ที่จะทำให้ชีวิตคุณสะดวกสบายยิ่งขึ้น</p>
+        
+        <div class="countdown-container">
+            <div class="countdown-text">กำลังนำคุณไปยังหน้าดาวน์โหลดใน</div>
+            <div id="countdownNumber" class="countdown-number">3</div>
+            <div class="progress-bar">
+                <div id="progress" class="progress"></div>
+            </div>
+            <a id="skipBtn" class="skip-btn">ข้ามการนับถอยหลัง</a>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🚀</div>
+                <div>ใช้งานเร็ว</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <div>ปลอดภัย</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💯</div>
+                <div>ฟรี 100%</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // เริ่มนับถอยหลังอัตโนมัติเมื่อโหลดหน้าเว็บ
+        document.addEventListener('DOMContentLoaded', function() {
+            let countdown = 3;
+            const countdownNumber = document.getElementById('countdownNumber');
+            const progress = document.getElementById('progress');
+            const skipBtn = document.getElementById('skipBtn');
+            
+            // ฟังก์ชันสำหรับข้ามไปยังหน้าดาวน์โหลด
+            function redirectToDownload() {
+                window.location.href = 'https://play.google.com/store/apps/details?id=com.example.app';
+            }
+            
+            // ตั้งค่าปุ่มข้าม
+            skipBtn.addEventListener('click', redirectToDownload);
+            
+            // เริ่มนับถอยหลัง
+            const countdownInterval = setInterval(function() {
+                countdown--;
+                countdownNumber.textContent = countdown;
+                progress.style.width = `${(3 - countdown) * 33.33}%`;
+                
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    redirectToDownload();
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
