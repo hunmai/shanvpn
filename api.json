@@ -1,13 +1,13 @@
 {
   
-"version": 14,
-"message": "📆ဖိုင်အပ်ဒိတ်နေ့ 26/10/2025\n🗃️ဖိုင်ဗားရှင်း 13 \n\n📣ဆာဗာပြန်ပြင်ထားပါတယ်✅",
+"version": 15,
+"message": "Config version: 15\n📥AutoUpdate \n• ♻️Updateကိုနှိပ်ပေးလိုက်ပါဗျ💁\n\nSHAN VPNကို အသုံးပြုတဲ့အတွက် \nကျေးဇူးတင်ပါတယ်ခင်ဗျာ❤️ ",
 "fileUrl": "https://raw.githubusercontent.com/hunmai/shanvpn/refs/heads/main/config.file",
 
-"messageWarning":"What's new ?\n• Updated UI \n• Added Hotshare function \n• Fixed bug and more\n \nThanks for your understand❤️",
-"title":"Can't use continue current version, you need to upgrade V1.0.4 ",
-"link":"https://play.google.com/store/apps/details?id=com.xxx.net",
-"website":"https://play.google.com/store/apps/details?id=com.xxx.net",
+"messageWarning":"What's new ?\n• Updated UI \n• Added More function \n• Fixed bug and more\n \nThanks for your understand❤️",
+"title":"Can't use continue current version, you need to upgrade V1.0.0 ",
+"link":"https://play.google.com/store/apps/details?id=com.svpnmm.mmdev",
+"website":"https://play.google.com/store/apps/details?id=com.svpnmm.mmdev",
 "versionCode": 1
   
 }
